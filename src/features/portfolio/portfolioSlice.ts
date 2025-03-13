@@ -6,7 +6,14 @@ interface PortfolioState {
 }
 
 const initialState: PortfolioState = {
-  assets: [],
+  assets: [
+    {
+      id: "1",
+      name: "TestCoin",
+      amount: 10,
+      price: 982,
+    },
+  ],
 };
 
 const portfolioSlice = createSlice({
