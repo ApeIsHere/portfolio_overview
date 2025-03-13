@@ -1,4 +1,5 @@
 import { Asset } from "../../types";
+import "./AssetItem.scss";
 
 interface AssetItemProps {
   asset: Asset;

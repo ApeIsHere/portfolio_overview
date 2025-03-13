@@ -4,6 +4,9 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { addAsset } from "../../features/portfolio/portfolioSlice";
 import { Asset, fakeAssets } from "../../types";
+import AssetItem from "../common/AssetItem";
+import Button from "../common/Button";
+import Input from "../common/Input";
 
 interface AddFormProps {
   onClose: () => void;
@@ -40,56 +43,50 @@ const AddForm: React.FC<AddFormProps> = ({ onClose }) => {
     <div className="add-form" onSubmit={handleSubmit}>
       <h2>Add Asset</h2>
       <div className="search-container">
-        <input
-          className="search-input"
-          type="text"
+        <Input
+          variant="search"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Search assets..."
-        ></input>
+        ></Input>
+        <ul className="asset-list">
+          {filteredAssets.map((asset) => (
+            <li key={asset.id}>
+              <AssetItem
+                asset={asset}
+                onClick={() => setSelectedAsset(asset)}
+                selected={selectedAsset?.id === asset.id}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="asset-list">
-        {filteredAssets.map((asset) => (
-          <li
-            key={asset.id}
-            className="asset-item"
-            onClick={() => setSelectedAsset(asset)}
-            style={{
-              background: selectedAsset?.id === asset.id ? "#333" : "transparent",
-            }}
-          >
-            <span className="asset-icon">{asset.icon}</span>
-            <span className="asset-name">{asset.name}</span>
-            <span className="asset-price">${asset.price.toFixed(2)}</span>
-          </li>
-        ))}
-      </ul>
       {selectedAsset && (
-        <div className="amount-input">
-          <label htmlFor="amount">Amount:</label>
-          <input
-            id="amount"
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="1"
-            step="1"
-          ></input>
-        </div>
+        <>
+          <div className="amount-input">
+            <label htmlFor="amount">Amount:</label>
+            <Input
+              variant="primary"
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="0.5"
+            ></Input>
+          </div>
+          <div className="form-actions">
+            <Button variant="secondary" onClick={onClose}>
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={handleSubmit}
+              disabled={!selectedAsset || !amount}
+            >
+              Add
+            </Button>
+          </div>
+        </>
       )}
-      <div className="form-actions">
-        <button type="button" onClick={onClose} className="close-button">
-          Close
-        </button>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="add-button"
-          disabled={!selectedAsset || !amount}
-        >
-          Add
-        </button>
-      </div>
     </div>
   );
 };
