@@ -1,12 +1,25 @@
 .portfolio-list {
   padding: 20px;
-
-  ul {
+  .asset-list {
     list-style: none;
     padding: 0;
   }
-  li {
+  .asset-item {
+    display: flex;
+    align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background: #2c2c2c;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+  .asset-icon {
+    margin-right: 10px;
+  }
+  .asset-name {
+    flex-grow: 1;
+  }
+  .asset-amount,
+  .asset-price {
+    margin-left: 10px;
   }
 }

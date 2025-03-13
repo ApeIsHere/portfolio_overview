@@ -1,22 +1,56 @@
 .add-form {
-  padding: 20px;
-  div {
-    margin-bottom: 10px;
-  }
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  input {
-    padding: 5px;
-    width: 200px;
-  }
-  button {
-    padding: 5px 10px;
-    background-color: #007bff;
+  color: white;
+
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    background: #2c2c2c;
+    border: 1px solid #444;
     color: white;
-    border: none;
-    cursor: pointer;
     border-radius: 4px;
+  }
+  .asset-list {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+  }
+  .asset-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #333;
+    }
+  }
+  .asset-icon {
+    margin-right: 10px;
+  }
+  .asset-name {
+    flex-grow: 1;
+  }
+  .asset-price {
+    margin-left: 10px;
+  }
+  .amount-input {
+    margin-bottom: 15px;
+    label {
+      margin-right: 10px;
+    }
+    input {
+      padding: 5px;
+      background: #2c2c2c;
+      border: 1px solid #444;
+      color: white;
+      border-radius: 4px;
+    }
+  }
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  .close-button {
+    background: #666;
+    color: white;
   }
 }

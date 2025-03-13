@@ -2,7 +2,23 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background: #1a1a1a;
+  color: white;
   h1 {
     text-align: center;
+  }
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  &:disabled {
+    background: #666;
+    cursor: not-allowed;
   }
 }

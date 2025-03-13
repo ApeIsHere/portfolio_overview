@@ -8,12 +8,15 @@ const PortfolioList: React.FC = () => {
     <div className="portfolio-list">
       <h2>Portfolio</h2>
       {assets.length === 0 ? (
-        <p>Нет активов в вашем портфеле. Добавьте что-нибудь, чтобы начать!</p>
+        <p>No assets found. Add your first asset with "Add Asset" button</p>
       ) : (
-        <ul>
+        <ul className="asset-list">
           {assets.map((asset) => (
-            <li key={asset.id}>
-              {asset.name} - {asset.amount} - ${asset.price}
+            <li key={asset.id} className="asset-item">
+              <span className="asset-icon">{asset.icon || "🔶"}</span>
+              <span className="asset-name">{asset.name}</span>
+              <span className="asset-amount">{asset.amount} units</span>
+              <span className="asset-price">${asset.price.toFixed(2)}</span>
             </li>
           ))}
         </ul>
