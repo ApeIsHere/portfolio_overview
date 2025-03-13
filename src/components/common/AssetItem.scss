@@ -1,0 +1,25 @@
+.asset-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #2c2c2c;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover {
+    background: #333;
+  }
+  &.selected {
+    background: #444;
+  }
+  .asset-icon {
+    margin-right: 10px;
+  }
+  .asset-name {
+    flex-grow: 1;
+  }
+  .asset-price,
+  .asset-amount {
+    margin-left: 10px;
+  }
+}
