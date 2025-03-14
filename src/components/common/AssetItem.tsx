@@ -27,7 +27,9 @@ const AssetItem: React.FC<AssetItemProps> = ({ asset, onClick, onRemove, selecte
       </span>
       <span className="asset-price">${asset.price.toFixed(2)}</span>
       {asset.change24h !== undefined && (
-        <span className={`asset-change ${asset.change24h >= 0 ? "up" : "down"}`}>
+        <span
+          className={`asset-change ${asset.change24h >= 0 ? "positive" : "negative"}`}
+        >
           {asset.change24h >= 0 ? "▲" : "▼"} {asset.change24h.toFixed(2)}%
         </span>
       )}

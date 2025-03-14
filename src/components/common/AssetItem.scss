@@ -8,14 +8,12 @@
   border-radius: 4px;
   cursor: pointer;
   &:hover {
-    background: #333;
+    background: #e0e0e0;
   }
   &.selected {
     background: var(--primary-color);
   }
-  .asset-icon {
-    margin-right: 10px;
-  }
+
   .asset-name {
     font-weight: bold;
     flex-grow: 1;
@@ -26,11 +24,11 @@
     margin-left: 10px;
   }
   .asset-change {
-    &.up {
-      color: #11fc11;
+    &.positive {
+      color: var(--positive-change);
     }
-    &.down {
-      color: #fd4a4a;
+    &.negative {
+      color: var(--negative-change);
     }
   }
 }
