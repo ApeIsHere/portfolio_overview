@@ -1,6 +1,26 @@
 .portfolio-list {
   padding: 20px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-primary);
+  }
+
   .asset-list {
-    padding: 0;
+    height: 400px;
+    padding-right: 10px;
+  }
+
+  .confirm-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
   }
 }

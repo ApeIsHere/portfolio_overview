@@ -1,12 +1,13 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AutoSizer, List } from "react-virtualized";
 import { AppDispatch, RootState } from "../../store";
 import { removeAsset } from "../../features/portfolio/portfolioSlice";
-import { useState } from "react";
 import { Asset } from "../../types";
+import "./PortfolioList.scss";
 import AssetItem from "../common/AssetItem";
 import Button from "../common/Button";
 import Modal from "../Modal/Modal";
-import { AutoSizer, List } from "react-virtualized";
 import {
   ROW_HEIGHT,
   MYASSET_LIST_HEIGHT,
