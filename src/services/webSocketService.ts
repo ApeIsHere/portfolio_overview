@@ -1,6 +1,7 @@
 import { updateMarketAsset } from "../features/portfolio/portfolioSlice";
 import { AppDispatch } from "../store";
 import { Asset } from "../types";
+import { COINS } from "../constants/appConstants";
 
 /*
 https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/All-Market-Tickers-Streams
@@ -34,8 +35,6 @@ interface WebSocketMessage {
   data: TickerData;
 }
 
-const symbols = ["btcusdt", "ethusdt", "bnbusdt", "etcusdt"];
-
 class WebSocketService {
   private socket: WebSocket | null = null;
   private dispatch: AppDispatch;
@@ -45,7 +44,7 @@ class WebSocketService {
   }
 
   connect() {
-    const streams = symbols.map((symbol) => `${symbol}@ticker`).join("/");
+    const streams = COINS.map((coin) => `${coin}@ticker`).join("/");
     const wsUrl = `wss://fstream.binance.com/stream?streams=${streams}`;
     this.socket = new WebSocket(wsUrl);
 

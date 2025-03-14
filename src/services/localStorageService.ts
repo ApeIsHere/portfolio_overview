@@ -1,3 +1,4 @@
+import { STORAGE_KEY } from "../constants/appConstants";
 import { Asset } from "../types";
 
 interface localStorageAsset {
@@ -17,7 +18,7 @@ interface PortfolioState {
 }
 
 class localStorageService {
-  private readonly STORAGE_KEY = "portfolioState";
+  private readonly STORAGE_KEY = STORAGE_KEY;
 
   // method to load from localStorage
   loadState(): PortfolioState {

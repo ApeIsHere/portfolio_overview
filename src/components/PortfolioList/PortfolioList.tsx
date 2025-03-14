@@ -7,9 +7,14 @@ import AssetItem from "../common/AssetItem";
 import Button from "../common/Button";
 import Modal from "../Modal/Modal";
 import { AutoSizer, List } from "react-virtualized";
+import {
+  ROW_HEIGHT,
+  MYASSET_LIST_HEIGHT,
+  OVERSCAN_ROW_COUNT,
+} from "../../constants/appConstants";
 
 const PortfolioList: React.FC = () => {
-  const assets = useSelector((state: RootState) => state.portfolio.myAssets);
+  const myAssets = useSelector((state: RootState) => state.portfolio.myAssets);
   const dispatch = useDispatch<AppDispatch>();
   const [isConfirmOpen, setIsConfirmOpen] = useState<boolean>(false);
   const [assetToRemove, setAssetToRemove] = useState<Asset | null>(null);
@@ -35,7 +40,7 @@ const PortfolioList: React.FC = () => {
     key: string;
     style: React.CSSProperties;
   }) => {
-    const asset = assets[index];
+    const asset = myAssets[index];
     return (
       <div key={key} style={style}>
         <AssetItem asset={asset} onRemove={openConfirmModal} />
@@ -45,19 +50,20 @@ const PortfolioList: React.FC = () => {
 
   return (
     <div className="portfolio-list">
-      <h2>Portfolio</h2>
-      {assets.length === 0 ? (
+      <h2>My Assets</h2>
+      {myAssets.length === 0 ? (
         <p>No assets found. Add your first asset with "Add Asset" button</p>
       ) : (
-        <div className="asset-list">
+        <div className="asset-list" style={{ height: MYASSET_LIST_HEIGHT }}>
           <AutoSizer>
             {({ height, width }) => (
               <List
                 width={width}
                 height={height}
-                rowCount={assets.length}
-                rowHeight={46}
+                rowCount={myAssets.length}
+                rowHeight={ROW_HEIGHT}
                 rowRenderer={rowRenderer}
+                overscanRowCount={OVERSCAN_ROW_COUNT}
               />
             )}
           </AutoSizer>
