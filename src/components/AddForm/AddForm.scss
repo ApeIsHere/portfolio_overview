@@ -1,25 +1,31 @@
 .add-form {
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-height: 650px;
+  color: var(--text-primary);
+  background-color: var(--card-background); // Светлый фон
+  border-radius: 8px;
+  padding: 20px;
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--text-primary);
+  }
 
   .search-container {
-    flex-grow: 1;
+    margin-bottom: 15px;
   }
-  .asset-list {
-    margin-top: 15px;
-    list-style: none;
-    padding: 0;
-  }
+
   .amount-input {
-    margin-top: 15px;
     margin-bottom: 15px;
     label {
       margin-right: 10px;
+      color: var(--text-primary);
     }
   }
+
+  .asset-list {
+    margin-top: 10px;
+  }
+
   .form-actions {
     display: flex;
     justify-content: space-between;

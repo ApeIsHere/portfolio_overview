@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { AppDispatch, RootState } from "../../store";
 import { Asset } from "../../types";
 import { addAsset } from "../../features/portfolio/portfolioSlice";
+import "./AddForm.scss";
 import AssetItem from "../common/AssetItem";
 import Button from "../common/Button";
 import Input from "../common/Input";
