@@ -1,15 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import { Asset } from "../../types";
+import localStorageService from "../../services/localStorageService";
 
 interface PortfolioState {
   myAssets: Asset[];
   marketAssets: Asset[];
 }
 
-const initialState: PortfolioState = {
-  myAssets: [],
-  marketAssets: [],
-};
+const initialState: PortfolioState = localStorageService.loadState();
 
 const portfolioSlice = createSlice({
   name: "portfolio",
@@ -17,10 +15,12 @@ const portfolioSlice = createSlice({
   reducers: {
     addAsset: (state, action: PayloadAction<Asset>) => {
       state.myAssets.push(action.payload);
+      localStorageService.saveState(current(state));
     },
     removeAsset: (state, action: PayloadAction<string>) => {
       const assetId = action.payload;
       state.myAssets = state.myAssets.filter((asset) => asset.id !== assetId);
+      localStorageService.saveState(current(state));
     },
     updateMarketAsset: (state, action: PayloadAction<Asset>) => {
       // check if the coin already exists
@@ -38,6 +38,7 @@ const portfolioSlice = createSlice({
           ? { ...asset, price: action.payload.price, change24h: action.payload.change24h }
           : asset
       );
+      localStorageService.saveState(current(state));
     },
   },
 });
