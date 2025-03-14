@@ -1,0 +1,23 @@
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "ring top top"
+    "list list analytics";
+  gap: 20px;
+
+  .portfolio-ring {
+    grid-area: ring;
+  }
+
+  .top-assets {
+    grid-area: top;
+  }
+
+  .portfolio-list {
+    grid-area: list;
+  }
+
+  .analytics {
+    grid-area: analytics;
+  }
+}
