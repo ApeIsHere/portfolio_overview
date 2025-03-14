@@ -1,12 +1,24 @@
 .app {
-  max-width: 600px;
-  min-height: 800px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 20px;
-  background: #1a1a1a;
-  color: white;
-  border-radius: 8px;
-  h1 {
-    text-align: center;
+
+  .tablet-container {
+    background-color: var(--tablet-background);
+    border: 10px solid var(--tablet-border);
+    border-radius: 15px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 1200px;
+    padding: 30px;
+    position: relative;
+  }
+
+  .add-button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
 }

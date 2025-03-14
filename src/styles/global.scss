@@ -1,35 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 :root {
-  --primary-color: #1e90ff;
-  --secondary-color: #2c2f33;
-  --text-color: #ffffff;
-  --scrollbar-track: #2c2f33;
-  --scrollbar-thumb: #40444b;
-  --scrollbar-thumb-hover: #5d6066;
+  --background-color: #e6f0fa; // Простой голубой фон
+  --tablet-background: #ffffff; // Белый фон планшета
+  --tablet-border: #1c2526; // Черная рамка планшета
+  --text-primary: #333333; // Темно-серый текст для белого фона
+  --text-secondary: #666666; // Серый текст
+  --card-background: #f5f7fa; // Светлый фон для карточек
+  --card-top1: #e6f0fa;
+  --card-top2: #d6e6f5;
+  --card-top3: #e0e7ff;
+  --icon-top1: #f5c518;
+  --icon-top2: #a6a6a6;
+  --icon-top3: #627eea;
+  --primary-color: #1e90ff; // Светло-синий для акцентов
+  --positive-change: #00c853; // Зеленый для положительного изменения
+  --negative-change: #d81b60; // Красный для отрицательного изменения
+  --scrollbar-track: #e0e0e0; // Светлый фон трека скроллбара
+  --scrollbar-thumb: #b0b0b0; // Серый ползунок
+  --scrollbar-thumb-hover: #909090; // Темнее при наведении
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+  background-color: var(--background-color);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
-/* Scrollbar styles*/
+/* Стили для скроллбара */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track); // color of track
+  background: var(--scrollbar-track);
   border-radius: 4px;
+  margin: 5px 0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb); // color of thumb
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
