@@ -4,12 +4,22 @@ import "./AssetItem.scss";
 interface AssetItemProps {
   asset: Asset;
   onClick?: () => void;
+  onRemove?: (id: string) => void;
   selected?: boolean;
 }
 
-const AssetItem: React.FC<AssetItemProps> = ({ asset, onClick, selected }) => {
+const AssetItem: React.FC<AssetItemProps> = ({ asset, onClick, onRemove, selected }) => {
+  // we need to select item if it's used in AddForm and remove item if it's used in PortfolioList
+  const handleClick = () => {
+    if (onRemove) {
+      onRemove(asset.id);
+    } else if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <div className={`asset-item ${selected ? "selected" : ""}`} onClick={onClick}>
+    <div className={`asset-item ${selected ? "selected" : ""}`} onClick={handleClick}>
       <span className="asset-icon">{asset.icon || "⭐"}</span>
       <span className="asset-icon">{asset.name}</span>
       <span className="asset-icon">${asset.price.toFixed(2)}</span>
