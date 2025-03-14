@@ -3,17 +3,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 500px;
+  max-height: 650px;
 
   .search-container {
     flex-grow: 1;
   }
   .asset-list {
+    margin-top: 15px;
     list-style: none;
     padding: 0;
-    max-height: 200px;
   }
   .amount-input {
+    margin-top: 15px;
     margin-bottom: 15px;
     label {
       margin-right: 10px;
