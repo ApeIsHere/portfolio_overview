@@ -6,6 +6,7 @@ import { Asset } from "../../types";
 import AssetItem from "../common/AssetItem";
 import Button from "../common/Button";
 import Modal from "../Modal/Modal";
+import { AutoSizer, List } from "react-virtualized";
 
 const PortfolioList: React.FC = () => {
   const assets = useSelector((state: RootState) => state.portfolio.myAssets);
@@ -13,15 +14,33 @@ const PortfolioList: React.FC = () => {
   const [isConfirmOpen, setIsConfirmOpen] = useState<boolean>(false);
   const [assetToRemove, setAssetToRemove] = useState<Asset | null>(null);
 
+  //Logic to remove asset with Modal window
   const handleRemove = (id: string) => {
     dispatch(removeAsset(id));
     setIsConfirmOpen(false);
     setAssetToRemove(null);
   };
-
   const openConfirmModal = (asset: Asset) => {
     setAssetToRemove(asset);
     setIsConfirmOpen(true);
+  };
+
+  // Function to render visible rows with react-virtualized
+  const rowRenderer = ({
+    index,
+    key,
+    style,
+  }: {
+    index: number;
+    key: string;
+    style: React.CSSProperties;
+  }) => {
+    const asset = assets[index];
+    return (
+      <div key={key} style={style}>
+        <AssetItem asset={asset} onRemove={openConfirmModal} />
+      </div>
+    );
   };
 
   return (
@@ -31,16 +50,24 @@ const PortfolioList: React.FC = () => {
         <p>No assets found. Add your first asset with "Add Asset" button</p>
       ) : (
         <div className="asset-list">
-          {assets.map((asset) => (
-            <AssetItem key={asset.id} asset={asset} onRemove={openConfirmModal} />
-          ))}
+          <AutoSizer>
+            {({ height, width }) => (
+              <List
+                width={width}
+                height={height}
+                rowCount={assets.length}
+                rowHeight={46}
+                rowRenderer={rowRenderer}
+              />
+            )}
+          </AutoSizer>
         </div>
       )}
 
       <Modal isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)}>
         <h3 style={{ textAlign: "center" }}>{`Remove ${
           assetToRemove ? assetToRemove.name : "asset"
-        } ?`}</h3>
+        }`}</h3>
         <p>
           Are you sure you want to remove {assetToRemove && assetToRemove.name} from your
           portfolio?
