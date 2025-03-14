@@ -4,22 +4,22 @@
   border-radius: 4px;
   cursor: pointer;
   &.primary {
-    background: #007bff;
-    color: white;
+    background: var(--primary-color);
+    color: var(--text-color);
     &:hover:not(.disabled) {
       background: #2f93ff;
     }
   }
   &.secondary {
     background: #666;
-    color: white;
+    color: var(--text-color);
     &:hover:not(.disabled) {
       background: #777;
     }
   }
   &.danger {
     background: #ff4444;
-    color: white;
+    color: var(--text-color);
     &:hover:not(.disabled) {
       background: #fa5b5b;
     }
