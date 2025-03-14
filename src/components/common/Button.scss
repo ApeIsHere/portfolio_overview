@@ -3,30 +3,38 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+
   &.primary {
-    background: var(--primary-color);
-    color: var(--text-color);
-    &:hover:not(.disabled) {
-      background: #2f93ff;
+    background-color: var(--primary-color);
+    color: var(--text-primary);
+    &:hover {
+      background-color: #42a5f5;
     }
   }
+
   &.secondary {
-    background: #666;
-    color: var(--text-color);
-    &:hover:not(.disabled) {
-      background: #777;
+    background-color: var(--card-background);
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    &:hover {
+      background-color: #e0e0e0;
     }
   }
+
   &.danger {
-    background: #ff4444;
-    color: var(--text-color);
-    &:hover:not(.disabled) {
-      background: #fa5b5b;
+    background-color: #fc7a7a;
+    color: var(--text-primary);
+    &:hover {
+      background-color: #fdb1b1;
     }
   }
-  &.disabled {
-    background: #888;
+
+  &:disabled {
+    background-color: #cccccc;
+    color: #666;
     cursor: not-allowed;
-    opacity: 0.6;
   }
 }

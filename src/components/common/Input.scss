@@ -1,18 +1,31 @@
 .input {
   padding: 8px;
-  border: 1px solid #444;
   border-radius: 4px;
-  background: var(--secondary-color);
-  color: var(--text-color);
+  border: 1px solid var(--text-secondary);
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  font-size: 14px;
+  width: 100%;
   box-sizing: border-box;
+  transition: border-color 0.2s;
+
   &.primary {
-    width: 200px;
+    border-color: var(--primary-color);
+    &:focus {
+      outline: none;
+      border-color: #42a5f5;
+    }
   }
+
   &.search {
-    width: 100%;
+    border-color: var(--text-secondary);
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
   }
-  &:focus {
-    outline: none;
-    border-color: #007bff;
+
+  &::placeholder {
+    color: var(--text-secondary);
   }
 }
