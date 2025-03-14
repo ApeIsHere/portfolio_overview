@@ -3,9 +3,12 @@ import AddForm from "./components/AddForm/AddForm";
 import PortfolioList from "./components/PortfolioList/PortfolioList";
 import Modal from "./components/Modal/Modal";
 import Button from "./components/common/Button";
+import useWebSocket from "./hooks/useWebsocket";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  useWebSocket();
+
   return (
     <div className="app">
       <h1>Portfolio Overview</h1>

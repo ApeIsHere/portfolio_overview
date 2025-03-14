@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { addAsset } from "../../features/portfolio/portfolioSlice";
-import { Asset, fakeAssets } from "../../types";
+import { Asset } from "../../types";
 import AssetItem from "../common/AssetItem";
 import Button from "../common/Button";
 import Input from "../common/Input";
@@ -14,6 +14,7 @@ interface AddFormProps {
 
 const AddForm: React.FC<AddFormProps> = ({ onClose }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const marketAsset = useSelector((state: RootState) => state.portfolio.marketAssets);
   const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null);
   const [amount, setAmount] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -35,7 +36,7 @@ const AddForm: React.FC<AddFormProps> = ({ onClose }) => {
     }
   };
 
-  const filteredAssets = fakeAssets.filter((asset) =>
+  const filteredAssets = marketAsset.filter((asset) =>
     asset.name.toLowerCase().includes(searchInput.toLocaleLowerCase())
   );
 

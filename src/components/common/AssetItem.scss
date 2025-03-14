@@ -19,7 +19,16 @@
     flex-grow: 1;
   }
   .asset-price,
-  .asset-amount {
+  .asset-amount,
+  .asset-change {
     margin-left: 10px;
+  }
+  .asset-change {
+    &.up {
+      color: #11fc11;
+    }
+    &.down {
+      color: #fd4a4a;
+    }
   }
 }
