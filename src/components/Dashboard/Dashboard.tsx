@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import TopAssets from "../TopAssets/TopAssets";
 import PortfolioList from "../PortfolioList/PortfolioList";
-import Analytics from "../Analytics/Analytics";
 import PortfolioPieChart from "../PortfolioPieChart/PortfolioPieChart";
 import "./Dashboard.scss";
 
@@ -14,7 +13,6 @@ const Dashboard: React.FC = () => {
       <PortfolioPieChart myAssets={myAssets} />
       <TopAssets myAssets={myAssets} />
       <PortfolioList />
-      <Analytics />
     </div>
   );
 };
