@@ -8,6 +8,7 @@ interface TopAssetsProps {
 }
 
 const TopAssets: React.FC<TopAssetsProps> = ({ myAssets }) => {
+  const cardColors = ["#e5def0", "#d6edda", "#f5f0d8"];
   const topAssets = useMemo(() => {
     return [...myAssets]
       .sort((a, b) => b.price * (b.amount || 0) - a.price * (a.amount || 0))
@@ -16,15 +17,15 @@ const TopAssets: React.FC<TopAssetsProps> = ({ myAssets }) => {
 
   return (
     <div className="top-assets">
-      <h2>Your Assets</h2>
+      <h2>Top Assets</h2>
       <div className="assets-grid">
         {topAssets.length === 0 ? (
           <p>No assets found. Add your first asset.</p>
         ) : (
           <>
-            <TopAssetItem asset={topAssets[0]} cardColor="#e5def0" />
-            <TopAssetItem asset={topAssets[1]} cardColor="#d6edda" />
-            <TopAssetItem asset={topAssets[2]} cardColor="#f5f0d8" />
+            {topAssets.map((asset, index) => (
+              <TopAssetItem asset={asset} cardColor={cardColors[index]} />
+            ))}
           </>
         )}
       </div>

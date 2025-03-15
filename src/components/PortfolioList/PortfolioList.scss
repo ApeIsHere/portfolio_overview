@@ -16,6 +16,15 @@
   .asset-list {
     height: 400px;
     padding-right: 10px;
+
+    .header-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-items: center;
+      margin-bottom: 5px;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
   }
 
   .confirm-actions {

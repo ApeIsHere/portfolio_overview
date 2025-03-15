@@ -9,7 +9,6 @@ interface AssetItemProps {
 }
 
 const AssetItem: React.FC<AssetItemProps> = ({ asset, onClick, onRemove, selected }) => {
-  // we need to select item if it's used in AddForm and remove item if it's used in PortfolioList
   const handleClick = () => {
     if (onRemove) {
       onRemove(asset);
@@ -18,19 +17,25 @@ const AssetItem: React.FC<AssetItemProps> = ({ asset, onClick, onRemove, selecte
     }
   };
 
+  const totalValue = asset.amount ? (asset.amount * asset.price).toFixed(2) : 0;
+  const marketPrice = asset.price.toFixed(2);
+
   return (
     <div className={`asset-item ${selected ? "selected" : ""}`} onClick={handleClick}>
-      <span className="asset-icon">{asset.icon || "⭐"}</span>
-      <span className="asset-name">
-        {asset.amount && <span className="asset-amount">{asset.amount} </span>}
-        {asset.name}
-      </span>
-      <span className="asset-price">${asset.price.toFixed(2)}</span>
+      <div className="asset-info">
+        <span className="asset-icon">{asset.icon || "⭐"}</span>
+        <span className="asset-name">
+          {asset.amount && <span className="asset-amount">{asset.amount} </span>}
+          {asset.name}
+        </span>
+      </div>
+      <span className="asset-total-value">${totalValue}</span>
+      <span className="asset-price">${marketPrice}</span>
       {asset.change24h !== undefined && (
         <span
           className={`asset-change ${asset.change24h >= 0 ? "positive" : "negative"}`}
         >
-          {asset.change24h >= 0 ? "▲" : "▼"} {asset.change24h.toFixed(2)}%
+          {asset.change24h >= 0 ? "▲" : "▼"} {Math.abs(asset.change24h).toFixed(2)}%
         </span>
       )}
     </div>

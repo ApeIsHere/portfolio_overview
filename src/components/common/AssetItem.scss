@@ -1,29 +1,57 @@
 .asset-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
   align-items: center;
   padding: 10px;
-  background: var(--secondary-color);
   margin-bottom: 5px;
-  margin-right: 5px;
-  border-radius: 4px;
+  background-color: transparent;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
+
   &:hover {
-    background: #e0e0e0;
-  }
-  &.selected {
-    background: var(--primary-color);
+    background-color: #e0e0e0;
   }
 
-  .asset-name {
-    font-weight: bold;
-    flex-grow: 1;
+  &.selected {
+    border: 2px solid var(--primary-color);
   }
-  .asset-price,
-  .asset-amount,
-  .asset-change {
-    margin-left: 10px;
+
+  .asset-info {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+
+    .asset-icon {
+      font-size: 20px;
+    }
+
+    .asset-name {
+      font-weight: 500;
+    }
+
+    .asset-amount {
+      color: var(--text-secondary);
+    }
   }
+
+  .asset-total-value {
+    font-size: 14px;
+    color: var(--text-primary);
+    white-space: nowrap; // Предотвращаем перенос строк
+  }
+
+  .asset-price {
+    font-size: 14px;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
   .asset-change {
+    font-size: 14px;
     &.positive {
       color: var(--positive-change);
     }

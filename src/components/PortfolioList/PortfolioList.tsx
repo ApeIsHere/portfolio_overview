@@ -20,7 +20,7 @@ const PortfolioList: React.FC = () => {
   const [isConfirmOpen, setIsConfirmOpen] = useState<boolean>(false);
   const [assetToRemove, setAssetToRemove] = useState<Asset | null>(null);
 
-  //Logic to remove asset with Modal window
+  // Logic to remove asset with Modal window
   const handleRemove = (id: string) => {
     dispatch(removeAsset(id));
     setIsConfirmOpen(false);
@@ -56,6 +56,12 @@ const PortfolioList: React.FC = () => {
         <p>No assets found. Add your first asset with "Add Asset" button</p>
       ) : (
         <div className="asset-list" style={{ height: MYASSET_LIST_HEIGHT }}>
+          <div className="header-row">
+            <span>coin</span>
+            <span>total</span>
+            <span>price</span>
+            <span>change(24h)</span>
+          </div>
           <AutoSizer>
             {({ height, width }) => (
               <List
