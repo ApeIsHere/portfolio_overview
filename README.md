@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# Portfolio Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это приложение для управления портфелем криптовалют, созданное с использованием React, TypeScript, Redux Toolkit и SCSS. Оно позволяет просматривать активы, добавлять и удалять их, получать обновления цен в реальном времени и визуализировать распределение портфеля.
 
-Currently, two official plugins are available:
+## Содержание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Установка](#установка)
+- [Архитектура](#архитектура)
+- [Реализованные функции](#реализованные-функции)
+- [Использованные библиотеки](#использованные-библиотеки)
+- [Демо](#демо)
 
-## Expanding the ESLint configuration
+## Установка
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Склонируйте репозиторий:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. Установите зависимости:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Запустите проект:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+  npm run dev
 ```
+
+## Архитектура
+
+- **src/**: Основной код.
+- **components/**: Компоненты.
+- **constants/** : Константы приложения.
+- **features/**: Redux slices.
+- **hooks/** : Кастомные хуки.
+- **services** : Сервисы типа webSocket и localStorage.
+- **store/**: Настройка Redux store.
+- **styles/**: SCSS-файлы.
+- **types/**: Типы TypeScript.
+  Используется Redux для состояния, WebSocket для обновлений, виртуализация для производительности.
+
+## Использование
+
+- Добавляйте активы через кнопку "Add Asset".
+- Просматривайте топ-3 активов и полный список.
+- Удаляйте активы, кликнув по ним в списке.
+- Следите за ценами в реальном времени.
+
+## Реализованные функции
+
+- **Список активов**: Отображает название, количество, цену, общую стоимость, изменение за 24 часа и долю в портфеле.
+- **Форма добавления**: Поиск активов, ввод количества, кнопки.
+- **Локальное хранение**: Assets сохраняются в localStorageс ключем `portfolioState`.
+- **Обновления в реальном времени**: WebSocket (`wss://fstream.binance.com/stream`) для цен.
+- **Удаление**: Клик по активу открывает модальное окно подтверждения.
+- **Виртуализация**: react-virtualized для работы с сотнями активов.
+- **Дополнительно**: Кастомный дизайн с цветами, иконками и пай чартом.
+
+## Использованные библиотеки
+
+React, TypeScript, RTK, SCSS, uuid, react-virtualized, recharts, Vite.
+
+## Демо
+
+[Живое демо](https://apeishere-crypto-overview.netlify.app/)
