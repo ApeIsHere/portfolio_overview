@@ -14,12 +14,13 @@ interface PieChartData {
 }
 
 // Prepare the data for piechart
-function prepareData(myAssets: Asset[]): PieChartData[] {
+function prepareData(myAssets: Asset[], totalValue: number): PieChartData[] {
   const data = myAssets.map((asset, index) => {
-    const assetValue = asset.price * (asset.amount || 0);
+    const assetValue: number = asset.price * (asset.amount || 0);
+    const percentage: number = (assetValue / totalValue) * 100;
     return {
       name: asset.name,
-      value: assetValue,
+      value: percentage,
       color: PIE_CHART_COLORS[index % PIE_CHART_COLORS.length], // Picking a color within the color array
     };
   });
@@ -28,13 +29,13 @@ function prepareData(myAssets: Asset[]): PieChartData[] {
 }
 
 const PortfolioPieChart: React.FC<PortfolioPieChartProps> = ({ myAssets }) => {
-  const data = prepareData(myAssets);
-
   // Total value of all assets in the portfolio
   const totalValue = myAssets.reduce(
     (total, asset) => total + asset.price * (asset.amount || 0),
     0
   );
+
+  const data = prepareData(myAssets, totalValue);
 
   return (
     <div className="portfolio-pie-chart">
@@ -58,7 +59,7 @@ const PortfolioPieChart: React.FC<PortfolioPieChartProps> = ({ myAssets }) => {
                 ))}
               </Pie>
               <Tooltip
-                formatter={(value: number) => `$${value.toFixed(2)}`}
+                formatter={(value: number) => `${value.toFixed(2)}%`}
                 contentStyle={{
                   backgroundColor: "var(--card-background)",
                   borderRadius: "4px",
