@@ -14,13 +14,6 @@ const TopAssets: React.FC<TopAssetsProps> = ({ myAssets }) => {
       .slice(0, 3);
   }, [myAssets]);
 
-  // Colors for the top 3 coins
-  const colors = [
-    { cardColor: "var(--card-top1)", iconColor: "var(--icon-top1)" },
-    { cardColor: "var(--card-top2)", iconColor: "var(--icon-top2)" },
-    { cardColor: "var(--card-top3)", iconColor: "var(--icon-top3)" },
-  ];
-
   return (
     <div className="top-assets">
       <h2>Your Assets</h2>
@@ -28,17 +21,11 @@ const TopAssets: React.FC<TopAssetsProps> = ({ myAssets }) => {
         {topAssets.length === 0 ? (
           <p>No assets found. Add your first asset.</p>
         ) : (
-          topAssets.map((asset, index) => {
-            const { cardColor, iconColor } = colors[index] || colors[0];
-            return (
-              <TopAssetItem
-                key={asset.id}
-                asset={asset}
-                cardColor={cardColor}
-                iconColor={iconColor}
-              />
-            );
-          })
+          <>
+            <TopAssetItem asset={topAssets[0]} cardColor="#e5def0" />
+            <TopAssetItem asset={topAssets[1]} cardColor="#d6edda" />
+            <TopAssetItem asset={topAssets[2]} cardColor="#f5f0d8" />
+          </>
         )}
       </div>
     </div>
