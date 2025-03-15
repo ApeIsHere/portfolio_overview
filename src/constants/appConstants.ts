@@ -7,6 +7,17 @@ export const MYASSET_LIST_HEIGHT = 600; // Высота списка в Portfoli
 export const ADD_FORM_LIST_HEIGHT = 400; // Высота списка в AddForm
 export const OVERSCAN_ROW_COUNT = 10; // Количество предварительно загружаемых строк
 
+export const PIE_CHART_COLORS = [
+  "#ef4444",
+  "#f97316",
+  "#eab308",
+  "#84cc16",
+  "#22c55e",
+  "#14b8a6",
+  "#3b82f6",
+  "#a855f7",
+];
+
 export const COINS = [
   "btcusdt",
   "ethusdt",
